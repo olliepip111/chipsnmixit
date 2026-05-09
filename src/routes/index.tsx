@@ -312,34 +312,7 @@ function Reviews() {
           <p className="max-w-sm text-muted-foreground">⭐ 3.6 · 209 reviews on Google. Here's a taste.</p>
         </div>
         <div className="mt-12 grid gap-6 md:grid-cols-3">
-          {reviews.map((r, i) => (
-            <article key={i} className={`rounded-3xl border-2 border-ink ${r.color} p-6 shadow-chunky-lg flex flex-col`}>
-              <div className="flex items-center gap-3">
-                <div className="grid h-12 w-12 place-items-center rounded-full border-2 border-ink bg-primary text-primary-foreground font-display text-xl">
-                  {r.name.charAt(0)}
-                </div>
-                <div>
-                  <div className="font-display text-lg leading-tight">{r.name}</div>
-                  <div className="text-xs text-muted-foreground">{r.meta}</div>
-                </div>
-              </div>
-              <div className="mt-4 flex items-center justify-between text-sm">
-                <div className="text-lg"><Stars n={r.rating} /></div>
-                <span className="text-muted-foreground">{r.when}</span>
-              </div>
-              {r.tag && (
-                <div className="mt-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground">{r.tag}</div>
-              )}
-              <p className="mt-4 text-base leading-relaxed">{r.body}</p>
-              <div className="mt-5 flex flex-wrap gap-2 text-xs">
-                {Object.entries(r.scores).map(([k, v]) => (
-                  <span key={k} className="rounded-full border-2 border-ink bg-card px-2 py-1 font-semibold">
-                    {k}: <span className="text-primary">{"★".repeat(v)}</span><span className="opacity-25">{"★".repeat(5 - v)}</span>
-                  </span>
-                ))}
-              </div>
-            </article>
-          ))}
+          {reviews.map((r, i) => <ReviewCard key={i} r={r} Stars={Stars} />)}
         </div>
       </div>
     </section>
