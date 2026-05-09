@@ -262,6 +262,89 @@ function Visit() {
   );
 }
 
+function Reviews() {
+  const reviews = [
+    {
+      name: "Naomi Chadd",
+      meta: "9 reviews · 4 photos",
+      when: "2 months ago",
+      tag: "Takeaway",
+      rating: 5,
+      body: "We had such a fun experience at Chip n Mix in Noosa! Being able to choose three different types of chips and customise them with your own toppings was such a great concept, and there was so much choice available. The food was incredibly fresh and everything tasted amazing. A special shoutout to the staff — there was a lovely gentleman who was so friendly and more than happy to answer all of our questions, which made the experience even better. The whole atmosphere was welcoming and enjoyable, and we honestly wish we were staying longer so we could come back again. Highly recommend if you're in the area!",
+      scores: { Food: 5, Service: 5, Atmosphere: 5 },
+      color: "bg-secondary",
+    },
+    {
+      name: "Drew Ebbstein",
+      meta: "Local Guide · 154 reviews · 409 photos",
+      when: "a year ago",
+      tag: "Dine in · Lunch · $20–40",
+      rating: 5,
+      body: "Fantastic and fun!! Highly recommended. Great successful concept.. fresh and tasty. The best chrip chip I've ever had. My custom loaded fries cost my $20.50 and was very satisfying. Will definitely be back.",
+      scores: { Food: 5, Service: 5, Atmosphere: 5 },
+      color: "bg-accent",
+    },
+    {
+      name: "Bella Bella",
+      meta: "Local Guide · 497 reviews · 3378 photos",
+      when: "3 months ago",
+      tag: null as string | null,
+      rating: 3,
+      body: "Still not sure what the hype is about. The idea is fun in theory — load up your own chips with whatever toppings you like — but it ends up feeling like you're overpaying for doing the work yourself. The chips are fine, the toppings are fine, but nothing really stands out to justify the price. If you're curious, it's worth trying once, but it didn't quite live up to the buzz.",
+      scores: { Food: 3, Service: 3, Atmosphere: 4 },
+      color: "bg-card",
+    },
+  ];
+  const Stars = ({ n }: { n: number }) => (
+    <span aria-label={`${n} out of 5 stars`} className="text-primary">
+      {"★".repeat(n)}<span className="opacity-25">{"★".repeat(5 - n)}</span>
+    </span>
+  );
+  return (
+    <section id="reviews" className="border-t-2 border-ink bg-cream">
+      <div className="mx-auto max-w-6xl px-4 py-20">
+        <div className="flex flex-col items-start gap-4 md:flex-row md:items-end md:justify-between">
+          <div>
+            <span className="inline-block rounded-full border-2 border-ink bg-accent px-3 py-1 text-xs font-bold uppercase shadow-chunky">Reviews</span>
+            <h2 className="mt-4 font-display text-5xl md:text-6xl">What folks are saying.</h2>
+          </div>
+          <p className="max-w-sm text-muted-foreground">⭐ 3.6 · 209 reviews on Google. Here's a taste.</p>
+        </div>
+        <div className="mt-12 grid gap-6 md:grid-cols-3">
+          {reviews.map((r, i) => (
+            <article key={i} className={`rounded-3xl border-2 border-ink ${r.color} p-6 shadow-chunky-lg flex flex-col`}>
+              <div className="flex items-center gap-3">
+                <div className="grid h-12 w-12 place-items-center rounded-full border-2 border-ink bg-primary text-primary-foreground font-display text-xl">
+                  {r.name.charAt(0)}
+                </div>
+                <div>
+                  <div className="font-display text-lg leading-tight">{r.name}</div>
+                  <div className="text-xs text-muted-foreground">{r.meta}</div>
+                </div>
+              </div>
+              <div className="mt-4 flex items-center justify-between text-sm">
+                <div className="text-lg"><Stars n={r.rating} /></div>
+                <span className="text-muted-foreground">{r.when}</span>
+              </div>
+              {r.tag && (
+                <div className="mt-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground">{r.tag}</div>
+              )}
+              <p className="mt-4 text-base leading-relaxed">{r.body}</p>
+              <div className="mt-5 flex flex-wrap gap-2 text-xs">
+                {Object.entries(r.scores).map(([k, v]) => (
+                  <span key={k} className="rounded-full border-2 border-ink bg-card px-2 py-1 font-semibold">
+                    {k}: <span className="text-primary">{"★".repeat(v)}</span><span className="opacity-25">{"★".repeat(5 - v)}</span>
+                  </span>
+                ))}
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function Footer() {
   return (
     <footer className="border-t-2 border-ink bg-ink text-cream">
