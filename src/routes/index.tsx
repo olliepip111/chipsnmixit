@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useState, type ReactElement } from "react";
 import heroFries from "@/assets/chipnmix-bowl.jpg";
 import fryBar from "@/assets/chipnmix-sauces.jpg";
 import toppings from "@/assets/chipnmix-toppings.jpg";
@@ -311,37 +312,59 @@ function Reviews() {
           <p className="max-w-sm text-muted-foreground">⭐ 3.6 · 209 reviews on Google. Here's a taste.</p>
         </div>
         <div className="mt-12 grid gap-6 md:grid-cols-3">
-          {reviews.map((r, i) => (
-            <article key={i} className={`rounded-3xl border-2 border-ink ${r.color} p-6 shadow-chunky-lg flex flex-col`}>
-              <div className="flex items-center gap-3">
-                <div className="grid h-12 w-12 place-items-center rounded-full border-2 border-ink bg-primary text-primary-foreground font-display text-xl">
-                  {r.name.charAt(0)}
-                </div>
-                <div>
-                  <div className="font-display text-lg leading-tight">{r.name}</div>
-                  <div className="text-xs text-muted-foreground">{r.meta}</div>
-                </div>
-              </div>
-              <div className="mt-4 flex items-center justify-between text-sm">
-                <div className="text-lg"><Stars n={r.rating} /></div>
-                <span className="text-muted-foreground">{r.when}</span>
-              </div>
-              {r.tag && (
-                <div className="mt-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground">{r.tag}</div>
-              )}
-              <p className="mt-4 text-base leading-relaxed">{r.body}</p>
-              <div className="mt-5 flex flex-wrap gap-2 text-xs">
-                {Object.entries(r.scores).map(([k, v]) => (
-                  <span key={k} className="rounded-full border-2 border-ink bg-card px-2 py-1 font-semibold">
-                    {k}: <span className="text-primary">{"★".repeat(v)}</span><span className="opacity-25">{"★".repeat(5 - v)}</span>
-                  </span>
-                ))}
-              </div>
-            </article>
-          ))}
+          {reviews.map((r, i) => <ReviewCard key={i} r={r} Stars={Stars} />)}
         </div>
       </div>
     </section>
+  );
+}
+
+type Review = {
+  name: string; meta: string; when: string; tag: string | null;
+  rating: number; body: string; scores: Record<string, number>; color: string;
+};
+
+function ReviewCard({ r, Stars }: { r: Review; Stars: (p: { n: number }) => ReactElement }) {
+  const [expanded, setExpanded] = useState(false);
+  const limit = 140;
+  const isLong = r.body.length > limit;
+  const shown = !isLong || expanded ? r.body : r.body.slice(0, limit).trimEnd() + "…";
+  return (
+    <article className={`rounded-3xl border-2 border-ink ${r.color} p-6 shadow-chunky-lg flex flex-col`}>
+      <div className="flex items-center gap-3">
+        <div className="grid h-12 w-12 place-items-center rounded-full border-2 border-ink bg-primary text-primary-foreground font-display text-xl">
+          {r.name.charAt(0)}
+        </div>
+        <div>
+          <div className="font-display text-lg leading-tight">{r.name}</div>
+          <div className="text-xs text-muted-foreground">{r.meta}</div>
+        </div>
+      </div>
+      <div className="mt-4 flex items-center justify-between text-sm">
+        <div className="text-lg"><Stars n={r.rating} /></div>
+        <span className="text-muted-foreground">{r.when}</span>
+      </div>
+      {r.tag && (
+        <div className="mt-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground">{r.tag}</div>
+      )}
+      <p className="mt-4 text-base leading-relaxed">{shown}</p>
+      {isLong && (
+        <button
+          type="button"
+          onClick={() => setExpanded((v) => !v)}
+          className="mt-2 self-start text-sm font-bold text-primary underline underline-offset-2 hover:opacity-80"
+        >
+          {expanded ? "See less" : "See more"}
+        </button>
+      )}
+      <div className="mt-5 flex flex-wrap gap-2 text-xs">
+        {Object.entries(r.scores).map(([k, v]) => (
+          <span key={k} className="rounded-full border-2 border-ink bg-card px-2 py-1 font-semibold">
+            {k}: <span className="text-primary">{"★".repeat(v)}</span><span className="opacity-25">{"★".repeat(5 - v)}</span>
+          </span>
+        ))}
+      </div>
+    </article>
   );
 }
 
