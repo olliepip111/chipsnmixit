@@ -324,7 +324,7 @@ type Review = {
   rating: number; body: string; scores: Record<string, number>; color: string;
 };
 
-function ReviewCard({ r, Stars }: { r: Review; Stars: (p: { n: number }) => JSX.Element }) {
+function ReviewCard({ r, Stars }: { r: Review; Stars: (p: { n: number }) => ReactElement }) {
   const [expanded, setExpanded] = useState(false);
   const limit = 140;
   const isLong = r.body.length > limit;
