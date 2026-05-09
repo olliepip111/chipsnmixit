@@ -26,6 +26,7 @@ function Index() {
       <About />
       <Sustainability />
       <Visit />
+      <Reviews />
       <Footer />
     </div>
   );
