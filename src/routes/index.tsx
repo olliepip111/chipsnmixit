@@ -144,7 +144,7 @@ function HowItWorks() {
     <section id="how" className="mx-auto max-w-6xl px-4 py-20">
       <div className="max-w-2xl">
         <span className="inline-block rounded-full border-2 border-ink bg-card px-3 py-1 text-xs font-bold uppercase shadow-chunky">How it works</span>
-        <h2 className="mt-4 font-display text-5xl md:text-6xl">Build your perfect mix.</h2>
+        <h2 className="mt-4 font-display text-5xl md:text-6xl">Build your perfect mix!</h2>
       </div>
       <div className="mt-12 grid gap-6 md:grid-cols-3">
         {steps.map((s) => (
