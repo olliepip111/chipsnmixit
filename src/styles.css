@@ -35,6 +35,8 @@
   --color-pickle: var(--pickle);
   --color-cream: var(--cream);
   --color-ink: var(--ink);
+  --color-bamboo: var(--bamboo);
+  --color-bamboo-light: var(--bamboo-light);
   --font-display: "Bowlby One", "Fredoka", system-ui, sans-serif;
   --font-body: "Fredoka", system-ui, sans-serif;
   --shadow-chunky: 6px 6px 0 0 var(--ink);
@@ -43,12 +45,14 @@
 
 :root {
   --radius: 1.25rem;
-  /* Brand palette: golden fries, ketchup red, pickle green, cream */
-  --mustard: oklch(0.86 0.18 90);    /* fry yellow */
+  /* Brand palette: bamboo, pale yellow, fresh green, ketchup red, white */
+  --mustard: oklch(0.93 0.12 95);    /* pale buttery yellow */
   --ketchup: oklch(0.62 0.22 27);    /* tomato red */
-  --pickle: oklch(0.72 0.18 145);    /* fresh green */
-  --cream: oklch(0.97 0.03 85);      /* paper bag cream */
-  --ink: oklch(0.18 0.02 60);        /* near-black brown */
+  --pickle: oklch(0.78 0.16 150);    /* fresh green */
+  --bamboo: oklch(0.78 0.08 75);     /* warm bamboo wood */
+  --bamboo-light: oklch(0.9 0.05 80);/* pale bamboo */
+  --cream: oklch(0.99 0.005 95);     /* clean white */
+  --ink: oklch(0.22 0.02 80);        /* near-black brown */
 
   --background: var(--cream);
   --foreground: var(--ink);
@@ -79,10 +83,13 @@
     color: var(--color-foreground);
     font-family: var(--font-body);
     background-image:
-      radial-gradient(circle at 10% 0%, color-mix(in oklab, var(--mustard) 35%, transparent) 0, transparent 40%),
-      radial-gradient(circle at 90% 20%, color-mix(in oklab, var(--ketchup) 18%, transparent) 0, transparent 35%),
-      radial-gradient(circle at 50% 100%, color-mix(in oklab, var(--pickle) 18%, transparent) 0, transparent 40%);
+      radial-gradient(circle at 10% 0%, color-mix(in oklab, var(--mustard) 50%, transparent) 0, transparent 45%),
+      radial-gradient(circle at 90% 15%, color-mix(in oklab, var(--pickle) 25%, transparent) 0, transparent 40%),
+      radial-gradient(circle at 50% 100%, color-mix(in oklab, var(--bamboo) 30%, transparent) 0, transparent 45%);
   }
+  .bamboo-bg {
+    background-color: var(--bamboo-light);
+    background-image: repeating-linear-gradient(90deg, color-mix(in oklab, var(--bamboo) 35%, transparent) 0 2px, transparent 2px 28px), repeating-linear-gradient(90deg, color-mix(in oklab, var(--bamboo) 18%, transparent) 0 1px, transparent 1px 8px);
   h1, h2, h3, h4 { font-family: var(--font-display); letter-spacing: -0.01em; }
 }
 

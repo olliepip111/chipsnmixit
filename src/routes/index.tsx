@@ -1,7 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
-import heroFries from "@/assets/hero-fries.jpg";
-import fryBar from "@/assets/fry-bar.jpg";
-import toppings from "@/assets/toppings.jpg";
+import heroFries from "@/assets/chipnmix-bowl.jpg";
+import fryBar from "@/assets/chipnmix-sauces.jpg";
+import toppings from "@/assets/chipnmix-toppings.jpg";
+import storefront from "@/assets/chipnmix-storefront.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -213,12 +214,13 @@ function Visit() {
     ["Sunday", "11:00 – 21:00"],
   ];
   return (
-    <section id="visit" className="border-t-2 border-ink bg-primary text-primary-foreground">
+    <section id="visit" className="border-t-2 border-ink bamboo-bg text-ink">
       <div className="mx-auto grid max-w-6xl gap-10 px-4 py-20 md:grid-cols-2">
         <div>
-          <span className="inline-block rounded-full border-2 border-ink bg-secondary px-3 py-1 text-xs font-bold uppercase text-ink shadow-chunky">Visit us</span>
+          <span className="inline-block rounded-full border-2 border-ink bg-card px-3 py-1 text-xs font-bold uppercase text-ink shadow-chunky">Visit us</span>
           <h2 className="mt-4 font-display text-5xl md:text-6xl">Come say <span className="bg-secondary text-ink px-2 border-2 border-ink -rotate-2 inline-block">hi 👋</span></h2>
-          <p className="mt-6 text-lg opacity-95">Tucked on the buzziest stretch of Hastings Street. Salt in the air, vinegar on the chips.</p>
+          <p className="mt-6 text-lg">Tucked on the buzziest stretch of Hastings Street. Salt in the air, vinegar on the chips.</p>
+          <img src={storefront} alt="Chip 'n' Mix storefront on Hastings Street, Noosa Heads" width={1080} height={1180} loading="lazy" className="mt-6 rounded-3xl border-2 border-ink shadow-chunky-lg w-full aspect-[4/5] object-cover max-w-sm" />
           <div className="mt-8 rounded-3xl border-2 border-ink bg-card p-6 text-foreground shadow-chunky-lg">
             <div className="font-display text-2xl">📍 8 Hastings St</div>
             <div className="text-muted-foreground">Noosa Heads QLD 4567, Australia</div>
