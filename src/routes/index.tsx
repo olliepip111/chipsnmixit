@@ -200,7 +200,7 @@ function Sustainability() {
       <div className="flex flex-col items-start gap-4 md:flex-row md:items-end md:justify-between">
         <div>
           <span className="inline-block rounded-full border-2 border-ink bg-accent px-3 py-1 text-xs font-bold uppercase shadow-chunky">Sustainability</span>
-          <h2 className="mt-4 font-display text-5xl md:text-6xl max-w-2xl">Fries today.<br className="md:hidden" /> <span className="text-accent-foreground bg-accent px-2 border-2 border-ink [box-decoration-break:clone] [-webkit-box-decoration-break:clone]">Planet tomorrow.</span></h2>
+          <h2 className="mt-4 font-display text-5xl md:text-6xl max-w-2xl">Fries today.<br className="md:hidden" /> <span className="text-accent-foreground bg-accent px-2 [box-decoration-break:clone] [-webkit-box-decoration-break:clone]">Planet tomorrow.</span></h2>
         </div>
         <p className="max-w-sm text-muted-foreground">Bold flavour, lighter footprint. Here's how we keep it green while keeping it golden.</p>
       </div>
