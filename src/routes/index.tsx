@@ -91,8 +91,11 @@ function Hero() {
           </div>
         </div>
         <div className="relative">
-          <div className="absolute -left-4 -top-4 z-10 h-28 w-28 rounded-full bg-accent border-2 border-ink shadow-chunky animate-float grid place-items-center text-center font-display text-base leading-tight rotate-[-12deg]">
-            30+<br/>toppings
+          <div className="absolute -left-4 -top-4 z-10 h-32 w-32 rounded-full bg-accent border-2 border-ink shadow-chunky-lg animate-float grid place-items-center text-center font-display leading-none rotate-[-12deg]">
+            <div>
+              <div className="text-3xl">30+</div>
+              <div className="text-lg mt-1">toppings</div>
+            </div>
           </div>
           <div className="absolute -right-4 bottom-6 z-10 rotate-6 rounded-2xl border-2 border-ink bg-primary px-4 py-2 font-display text-primary-foreground shadow-chunky">
             🥤 saucy
