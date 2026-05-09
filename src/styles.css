@@ -43,12 +43,14 @@
 
 :root {
   --radius: 1.25rem;
-  /* Brand palette: golden fries, ketchup red, pickle green, cream */
-  --mustard: oklch(0.86 0.18 90);    /* fry yellow */
+  /* Brand palette: bamboo, pale yellow, fresh green, ketchup red, white */
+  --mustard: oklch(0.93 0.12 95);    /* pale buttery yellow */
   --ketchup: oklch(0.62 0.22 27);    /* tomato red */
-  --pickle: oklch(0.72 0.18 145);    /* fresh green */
-  --cream: oklch(0.97 0.03 85);      /* paper bag cream */
-  --ink: oklch(0.18 0.02 60);        /* near-black brown */
+  --pickle: oklch(0.78 0.16 150);    /* fresh green */
+  --bamboo: oklch(0.78 0.08 75);     /* warm bamboo wood */
+  --bamboo-light: oklch(0.9 0.05 80);/* pale bamboo */
+  --cream: oklch(0.99 0.005 95);     /* clean white */
+  --ink: oklch(0.22 0.02 80);        /* near-black brown */
 
   --background: var(--cream);
   --foreground: var(--ink);
