@@ -35,6 +35,8 @@
   --color-pickle: var(--pickle);
   --color-cream: var(--cream);
   --color-ink: var(--ink);
+  --color-bamboo: var(--bamboo);
+  --color-bamboo-light: var(--bamboo-light);
   --font-display: "Bowlby One", "Fredoka", system-ui, sans-serif;
   --font-body: "Fredoka", system-ui, sans-serif;
   --shadow-chunky: 6px 6px 0 0 var(--ink);
