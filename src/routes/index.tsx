@@ -115,12 +115,18 @@ function Hero() {
 }
 
 function Marquee() {
-  const items = ["🍟 Crinkle", "🧀 Cheese sauce", "🌶️ Birria", "🥓 Bacon bits", "🥒 Pickles", "🌿 Herbs", "🌽 Corn", "🥚 Egg", "🍯 Honey mustard", "🌶️ Sriracha"];
+  const items = [
+    "🧂 Classic salt", "🐔 Chicken salt", "🌶️ Paprika", "🌶️ Togarashi",
+    "🍅 Marinara", "🍱 Katsu sauce", "🌶️ Birria sauce", "🧀 Liquid cheese",
+    "🍕 Pepperoni", "🍗 Chicken tenders", "🥓 Bacon", "🧀 Parmesan",
+    "🫒 Black olives", "🌿 Oregano", "🫘 Beans",
+    "🥖 Chilli &amp; garlic Pangrattato",
+  ];
   return (
     <div className="border-y-2 border-ink bg-primary py-3 text-primary-foreground overflow-hidden">
-      <div className="flex gap-10 whitespace-nowrap font-display text-2xl animate-[float-y_3s_ease-in-out_infinite]">
+      <div className="flex w-max gap-10 whitespace-nowrap font-display text-2xl animate-marquee">
         {[...items, ...items].map((it, i) => (
-          <span key={i}>{it}</span>
+          <span key={i} dangerouslySetInnerHTML={{ __html: it }} />
         ))}
       </div>
     </div>
