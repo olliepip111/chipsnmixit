@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useState } from "react";
 import heroFries from "@/assets/chipnmix-bowl.jpg";
 import fryBar from "@/assets/chipnmix-sauces.jpg";
 import toppings from "@/assets/chipnmix-toppings.jpg";
