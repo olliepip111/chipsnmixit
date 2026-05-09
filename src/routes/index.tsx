@@ -118,6 +118,7 @@ function Marquee() {
   const items = [
     "🧂 Classic salt", "🐔 Chicken salt", "🌶️ Paprika", "🌶️ Togarashi",
     "🍅 Marinara", "🍱 Katsu sauce", "🌶️ Birria sauce", "🧀 Liquid cheese",
+    "🥑 Guacamole", "🧅 Onions",
     "🍕 Pepperoni", "🍗 Chicken tenders", "🥓 Bacon", "🧀 Parmesan",
     "🫒 Black olives", "🌿 Oregano", "🫘 Beans",
     "🥖 Chilli &amp; garlic Pangrattato",
