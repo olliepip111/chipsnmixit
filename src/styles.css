@@ -83,10 +83,13 @@
     color: var(--color-foreground);
     font-family: var(--font-body);
     background-image:
-      radial-gradient(circle at 10% 0%, color-mix(in oklab, var(--mustard) 35%, transparent) 0, transparent 40%),
-      radial-gradient(circle at 90% 20%, color-mix(in oklab, var(--ketchup) 18%, transparent) 0, transparent 35%),
-      radial-gradient(circle at 50% 100%, color-mix(in oklab, var(--pickle) 18%, transparent) 0, transparent 40%);
+      radial-gradient(circle at 10% 0%, color-mix(in oklab, var(--mustard) 50%, transparent) 0, transparent 45%),
+      radial-gradient(circle at 90% 15%, color-mix(in oklab, var(--pickle) 25%, transparent) 0, transparent 40%),
+      radial-gradient(circle at 50% 100%, color-mix(in oklab, var(--bamboo) 30%, transparent) 0, transparent 45%);
   }
+  .bamboo-bg {
+    background-color: var(--bamboo-light);
+    background-image: repeating-linear-gradient(90deg, color-mix(in oklab, var(--bamboo) 35%, transparent) 0 2px, transparent 2px 28px), repeating-linear-gradient(90deg, color-mix(in oklab, var(--bamboo) 18%, transparent) 0 1px, transparent 1px 8px);
   h1, h2, h3, h4 { font-family: var(--font-display); letter-spacing: -0.01em; }
 }
 
