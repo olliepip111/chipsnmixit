@@ -9,8 +9,32 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as ToppingsRouteImport } from './routes/toppings'
+import { Route as FindUsRouteImport } from './routes/find-us'
+import { Route as ChipsRouteImport } from './routes/chips'
+import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 
+const ToppingsRoute = ToppingsRouteImport.update({
+  id: '/toppings',
+  path: '/toppings',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FindUsRoute = FindUsRouteImport.update({
+  id: '/find-us',
+  path: '/find-us',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ChipsRoute = ChipsRouteImport.update({
+  id: '/chips',
+  path: '/chips',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -19,28 +43,72 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/chips': typeof ChipsRoute
+  '/find-us': typeof FindUsRoute
+  '/toppings': typeof ToppingsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/chips': typeof ChipsRoute
+  '/find-us': typeof FindUsRoute
+  '/toppings': typeof ToppingsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/chips': typeof ChipsRoute
+  '/find-us': typeof FindUsRoute
+  '/toppings': typeof ToppingsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/about' | '/chips' | '/find-us' | '/toppings'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/about' | '/chips' | '/find-us' | '/toppings'
+  id: '__root__' | '/' | '/about' | '/chips' | '/find-us' | '/toppings'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
+  ChipsRoute: typeof ChipsRoute
+  FindUsRoute: typeof FindUsRoute
+  ToppingsRoute: typeof ToppingsRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/toppings': {
+      id: '/toppings'
+      path: '/toppings'
+      fullPath: '/toppings'
+      preLoaderRoute: typeof ToppingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/find-us': {
+      id: '/find-us'
+      path: '/find-us'
+      fullPath: '/find-us'
+      preLoaderRoute: typeof FindUsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/chips': {
+      id: '/chips'
+      path: '/chips'
+      fullPath: '/chips'
+      preLoaderRoute: typeof ChipsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -53,7 +121,21 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
+  ChipsRoute: ChipsRoute,
+  FindUsRoute: FindUsRoute,
+  ToppingsRoute: ToppingsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
