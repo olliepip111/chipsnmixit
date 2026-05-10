@@ -30,8 +30,9 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
-  --color-teal: var(--teal);
+  --color-ketchup: var(--ketchup);
   --color-mustard: var(--mustard);
+  --color-pickle: var(--pickle);
   --color-cream: var(--cream);
   --color-ink: var(--ink);
   --color-bamboo: var(--bamboo);
@@ -44,15 +45,14 @@
 
 :root {
   --radius: 1.25rem;
-
-  /* Chip 'n' Mix brand palette — teal, mustard, cream, bamboo */
-  --teal: oklch(0.52 0.14 192);          /* logo teal/mint green */
-  --teal-light: oklch(0.72 0.10 192);    /* lighter teal for hover states */
-  --mustard: oklch(0.84 0.18 92);        /* logo mustard yellow */
-  --cream: oklch(0.97 0.015 88);         /* warm cream background — like store walls */
-  --bamboo: oklch(0.78 0.08 75);         /* natural bamboo wood tone */
-  --bamboo-light: oklch(0.92 0.04 80);   /* pale bamboo for section backgrounds */
-  --ink: oklch(0.22 0.02 200);           /* deep charcoal with slight teal tint */
+  /* Brand palette: bamboo, pale yellow, fresh green, ketchup red, white */
+  --mustard: oklch(0.88 0.20 95);    /* electric mustard yellow */
+  --ketchup: oklch(0.58 0.26 27);    /* hot tomato red */
+  --pickle: oklch(0.72 0.24 145);    /* electric green */
+  --bamboo: oklch(0.78 0.08 75);     /* warm bamboo wood */
+  --bamboo-light: oklch(0.9 0.05 80);/* pale bamboo */
+  --cream: oklch(0.99 0.005 95);     /* clean white */
+  --ink: oklch(0.22 0.02 80);        /* near-black brown */
 
   --background: var(--cream);
   --foreground: var(--ink);
@@ -60,24 +60,19 @@
   --card-foreground: var(--ink);
   --popover: oklch(1 0 0);
   --popover-foreground: var(--ink);
-
-  /* Primary = teal (logo colour) */
-  --primary: var(--teal);
+  --primary: var(--ketchup);
   --primary-foreground: oklch(0.99 0 0);
-
-  /* Secondary = mustard yellow */
   --secondary: var(--mustard);
   --secondary-foreground: var(--ink);
-
-  --muted: var(--bamboo-light);
-  --muted-foreground: oklch(0.45 0.04 180);
-  --accent: var(--bamboo-light);
+  --muted: oklch(0.94 0.02 85);
+  --muted-foreground: oklch(0.42 0.03 60);
+  --accent: var(--pickle);
   --accent-foreground: var(--ink);
   --destructive: oklch(0.55 0.24 27);
   --destructive-foreground: oklch(0.99 0 0);
   --border: var(--ink);
   --input: oklch(0.9 0.01 85);
-  --ring: var(--teal);
+  --ring: var(--ketchup);
 }
 
 @layer base {
@@ -87,37 +82,20 @@
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-body);
-    /* Subtle warm background — no loud gradients */
     background-image:
-      radial-gradient(circle at 10% 0%, color-mix(in oklab, var(--mustard) 20%, transparent) 0, transparent 40%),
-      radial-gradient(circle at 90% 15%, color-mix(in oklab, var(--teal) 10%, transparent) 0, transparent 35%);
+      radial-gradient(circle at 10% 0%, color-mix(in oklab, var(--mustard) 50%, transparent) 0, transparent 45%),
+      radial-gradient(circle at 90% 15%, color-mix(in oklab, var(--pickle) 25%, transparent) 0, transparent 40%),
+      radial-gradient(circle at 50% 100%, color-mix(in oklab, var(--bamboo) 30%, transparent) 0, transparent 45%);
   }
   .bamboo-bg {
     background-color: var(--bamboo-light);
-    background-image:
-      repeating-linear-gradient(
-        90deg,
-        color-mix(in oklab, var(--bamboo) 30%, transparent) 0 2px,
-        transparent 2px 28px
-      ),
-      repeating-linear-gradient(
-        90deg,
-        color-mix(in oklab, var(--bamboo) 15%, transparent) 0 1px,
-        transparent 1px 8px
-      );
+    background-image: repeating-linear-gradient(90deg, color-mix(in oklab, var(--bamboo) 35%, transparent) 0 2px, transparent 2px 28px), repeating-linear-gradient(90deg, color-mix(in oklab, var(--bamboo) 18%, transparent) 0 1px, transparent 1px 8px);
   }
   h1, h2, h3, h4 { font-family: var(--font-display); letter-spacing: -0.01em; }
 }
 
 @layer utilities {
   .border-ink { border-color: var(--ink); }
-  .bg-teal { background-color: var(--teal); }
-  .bg-mustard { background-color: var(--mustard); }
-  .bg-cream { background-color: var(--cream); }
-  .text-teal { color: var(--teal); }
-  .text-mustard { color: var(--mustard); }
-  .text-cream { color: var(--cream); }
-  .text-ink { color: var(--ink); }
   .shadow-chunky { box-shadow: var(--shadow-chunky); }
   .shadow-chunky-lg { box-shadow: var(--shadow-chunky-lg); }
   .text-stroke {
@@ -140,7 +118,7 @@
   }
   .animate-marquee { animation: marquee-x 40s linear infinite; }
   .img-pop {
-    filter: contrast(1.08) saturate(1.25) brightness(1.02);
+    filter: contrast(1.12) saturate(1.35) brightness(1.03);
   }
   .checker-bg {
     background-color: var(--mustard);
