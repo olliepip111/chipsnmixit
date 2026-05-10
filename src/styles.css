@@ -46,9 +46,9 @@
 :root {
   --radius: 1.25rem;
   /* Brand palette: bamboo, pale yellow, fresh green, ketchup red, white */
-  --mustard: oklch(0.93 0.12 95);    /* pale buttery yellow */
-  --ketchup: oklch(0.62 0.22 27);    /* tomato red */
-  --pickle: oklch(0.78 0.16 150);    /* fresh green */
+  --mustard: oklch(0.88 0.20 95);    /* electric mustard yellow */
+  --ketchup: oklch(0.58 0.26 27);    /* hot tomato red */
+  --pickle: oklch(0.72 0.24 145);    /* electric green */
   --bamboo: oklch(0.78 0.08 75);     /* warm bamboo wood */
   --bamboo-light: oklch(0.9 0.05 80);/* pale bamboo */
   --cream: oklch(0.99 0.005 95);     /* clean white */
@@ -117,4 +117,14 @@
     100% { transform: translateX(-50%); }
   }
   .animate-marquee { animation: marquee-x 40s linear infinite; }
+  .img-pop {
+    filter: contrast(1.12) saturate(1.35) brightness(1.03);
+  }
+  .checker-bg {
+    background-color: var(--mustard);
+    background-image:
+      linear-gradient(45deg, color-mix(in oklab, var(--ink) 8%, transparent) 25%, transparent 25%),
+      linear-gradient(-45deg, color-mix(in oklab, var(--ink) 8%, transparent) 25%, transparent 25%);
+    background-size: 28px 28px;
+  }
 }
