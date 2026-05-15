@@ -10,24 +10,12 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as ToppingsRouteImport } from './routes/toppings'
-import { Route as FindUsRouteImport } from './routes/find-us'
-import { Route as ChipsRouteImport } from './routes/chips'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 
 const ToppingsRoute = ToppingsRouteImport.update({
   id: '/toppings',
   path: '/toppings',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const FindUsRoute = FindUsRouteImport.update({
-  id: '/find-us',
-  path: '/find-us',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ChipsRoute = ChipsRouteImport.update({
-  id: '/chips',
-  path: '/chips',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AboutRoute = AboutRouteImport.update({
@@ -44,38 +32,30 @@ const IndexRoute = IndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/chips': typeof ChipsRoute
-  '/find-us': typeof FindUsRoute
   '/toppings': typeof ToppingsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/chips': typeof ChipsRoute
-  '/find-us': typeof FindUsRoute
   '/toppings': typeof ToppingsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/chips': typeof ChipsRoute
-  '/find-us': typeof FindUsRoute
   '/toppings': typeof ToppingsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/chips' | '/find-us' | '/toppings'
+  fullPaths: '/' | '/about' | '/toppings'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/chips' | '/find-us' | '/toppings'
-  id: '__root__' | '/' | '/about' | '/chips' | '/find-us' | '/toppings'
+  to: '/' | '/about' | '/toppings'
+  id: '__root__' | '/' | '/about' | '/toppings'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
-  ChipsRoute: typeof ChipsRoute
-  FindUsRoute: typeof FindUsRoute
   ToppingsRoute: typeof ToppingsRoute
 }
 
@@ -86,20 +66,6 @@ declare module '@tanstack/react-router' {
       path: '/toppings'
       fullPath: '/toppings'
       preLoaderRoute: typeof ToppingsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/find-us': {
-      id: '/find-us'
-      path: '/find-us'
-      fullPath: '/find-us'
-      preLoaderRoute: typeof FindUsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/chips': {
-      id: '/chips'
-      path: '/chips'
-      fullPath: '/chips'
-      preLoaderRoute: typeof ChipsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/about': {
@@ -122,8 +88,6 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
-  ChipsRoute: ChipsRoute,
-  FindUsRoute: FindUsRoute,
   ToppingsRoute: ToppingsRoute,
 }
 export const routeTree = rootRouteImport
