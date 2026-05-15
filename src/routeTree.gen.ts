@@ -9,13 +9,13 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as ToppingsRouteImport } from './routes/toppings'
+import { Route as MenuRouteImport } from './routes/menu'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 
-const ToppingsRoute = ToppingsRouteImport.update({
-  id: '/toppings',
-  path: '/toppings',
+const MenuRoute = MenuRouteImport.update({
+  id: '/menu',
+  path: '/menu',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AboutRoute = AboutRouteImport.update({
@@ -32,40 +32,40 @@ const IndexRoute = IndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/toppings': typeof ToppingsRoute
+  '/menu': typeof MenuRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/toppings': typeof ToppingsRoute
+  '/menu': typeof MenuRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/toppings': typeof ToppingsRoute
+  '/menu': typeof MenuRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/toppings'
+  fullPaths: '/' | '/about' | '/menu'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/toppings'
-  id: '__root__' | '/' | '/about' | '/toppings'
+  to: '/' | '/about' | '/menu'
+  id: '__root__' | '/' | '/about' | '/menu'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
-  ToppingsRoute: typeof ToppingsRoute
+  MenuRoute: typeof MenuRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/toppings': {
-      id: '/toppings'
-      path: '/toppings'
-      fullPath: '/toppings'
-      preLoaderRoute: typeof ToppingsRouteImport
+    '/menu': {
+      id: '/menu'
+      path: '/menu'
+      fullPath: '/menu'
+      preLoaderRoute: typeof MenuRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/about': {
@@ -88,8 +88,18 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
-  ToppingsRoute: ToppingsRoute,
+  MenuRoute: MenuRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
