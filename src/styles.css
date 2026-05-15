@@ -30,49 +30,50 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
-  --color-ketchup: var(--ketchup);
   --color-mustard: var(--mustard);
-  --color-pickle: var(--pickle);
+  --color-teal: var(--teal);
   --color-cream: var(--cream);
   --color-ink: var(--ink);
   --color-bamboo: var(--bamboo);
   --color-bamboo-light: var(--bamboo-light);
-  --font-display: "Bowlby One", "Fredoka", system-ui, sans-serif;
+  --font-display: "Fredoka", "Bowlby One", system-ui, sans-serif;
   --font-body: "Fredoka", system-ui, sans-serif;
-  --shadow-chunky: 6px 6px 0 0 var(--ink);
-  --shadow-chunky-lg: 10px 10px 0 0 var(--ink);
+  --shadow-soft: 0 8px 24px -10px color-mix(in oklab, var(--ink) 25%, transparent);
+  --shadow-chunky: 0 10px 30px -12px color-mix(in oklab, var(--ink) 30%, transparent);
+  --shadow-chunky-lg: 0 18px 50px -18px color-mix(in oklab, var(--ink) 35%, transparent);
 }
 
 :root {
   --radius: 1.25rem;
-  /* Brand palette: bamboo, pale yellow, fresh green, ketchup red, white */
-  --mustard: oklch(0.88 0.20 95);    /* electric mustard yellow */
-  --ketchup: oklch(0.58 0.26 27);    /* hot tomato red */
-  --pickle: oklch(0.72 0.24 145);    /* electric green */
-  --bamboo: oklch(0.78 0.08 75);     /* warm bamboo wood */
-  --bamboo-light: oklch(0.9 0.05 80);/* pale bamboo */
-  --cream: oklch(0.99 0.005 95);     /* clean white */
-  --ink: oklch(0.22 0.02 80);        /* near-black brown */
+  /* Coastal Noosa palette: cream walls, teal/mint signage, mustard logo, charcoal-green text */
+  --cream: oklch(0.97 0.012 85);          /* warm creamy beige (store walls) */
+  --bamboo: oklch(0.78 0.05 75);          /* warm bamboo wood */
+  --bamboo-light: oklch(0.93 0.025 80);   /* pale bamboo */
+  --teal: oklch(0.78 0.10 175);           /* mint/teal signage */
+  --teal-deep: oklch(0.55 0.10 185);      /* deeper teal for accents */
+  --mustard: oklch(0.85 0.14 90);         /* mustard yellow logo */
+  --ink: oklch(0.28 0.03 165);            /* deep charcoal-green text */
+  --paper: oklch(1 0 0);                  /* clean white surface */
 
   --background: var(--cream);
   --foreground: var(--ink);
-  --card: oklch(1 0 0);
+  --card: var(--paper);
   --card-foreground: var(--ink);
-  --popover: oklch(1 0 0);
+  --popover: var(--paper);
   --popover-foreground: var(--ink);
-  --primary: var(--ketchup);
+  --primary: var(--teal-deep);
   --primary-foreground: oklch(0.99 0 0);
   --secondary: var(--mustard);
   --secondary-foreground: var(--ink);
-  --muted: oklch(0.94 0.02 85);
-  --muted-foreground: oklch(0.42 0.03 60);
-  --accent: var(--pickle);
+  --muted: oklch(0.94 0.015 85);
+  --muted-foreground: oklch(0.45 0.02 165);
+  --accent: var(--teal);
   --accent-foreground: var(--ink);
-  --destructive: oklch(0.55 0.24 27);
+  --destructive: oklch(0.55 0.22 27);
   --destructive-foreground: oklch(0.99 0 0);
-  --border: var(--ink);
+  --border: color-mix(in oklab, var(--ink) 15%, transparent);
   --input: oklch(0.9 0.01 85);
-  --ring: var(--ketchup);
+  --ring: var(--teal-deep);
 }
 
 @layer base {
@@ -83,48 +84,66 @@
     color: var(--color-foreground);
     font-family: var(--font-body);
     background-image:
-      radial-gradient(circle at 10% 0%, color-mix(in oklab, var(--mustard) 50%, transparent) 0, transparent 45%),
-      radial-gradient(circle at 90% 15%, color-mix(in oklab, var(--pickle) 25%, transparent) 0, transparent 40%),
-      radial-gradient(circle at 50% 100%, color-mix(in oklab, var(--bamboo) 30%, transparent) 0, transparent 45%);
+      radial-gradient(circle at 8% -5%, color-mix(in oklab, var(--mustard) 22%, transparent) 0, transparent 40%),
+      radial-gradient(circle at 95% 8%, color-mix(in oklab, var(--teal) 18%, transparent) 0, transparent 38%),
+      radial-gradient(circle at 50% 110%, color-mix(in oklab, var(--bamboo) 15%, transparent) 0, transparent 45%);
   }
   .bamboo-bg {
     background-color: var(--bamboo-light);
-    background-image: repeating-linear-gradient(90deg, color-mix(in oklab, var(--bamboo) 35%, transparent) 0 2px, transparent 2px 28px), repeating-linear-gradient(90deg, color-mix(in oklab, var(--bamboo) 18%, transparent) 0 1px, transparent 1px 8px);
+    background-image:
+      repeating-linear-gradient(90deg, color-mix(in oklab, var(--bamboo) 35%, transparent) 0 2px, transparent 2px 22px),
+      repeating-linear-gradient(90deg, color-mix(in oklab, var(--bamboo) 18%, transparent) 0 1px, transparent 1px 6px);
   }
-  h1, h2, h3, h4 { font-family: var(--font-display); letter-spacing: -0.01em; }
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    letter-spacing: -0.015em;
+  }
 }
 
 @layer utilities {
   .border-ink { border-color: var(--ink); }
+  .ring-ink { --tw-ring-color: var(--ink); }
+  .shadow-soft { box-shadow: var(--shadow-soft); }
   .shadow-chunky { box-shadow: var(--shadow-chunky); }
   .shadow-chunky-lg { box-shadow: var(--shadow-chunky-lg); }
   .text-stroke {
-    -webkit-text-stroke: 2px var(--ink);
-    text-shadow: 4px 4px 0 var(--ink);
+    -webkit-text-stroke: 1.5px var(--ink);
   }
   @keyframes wiggle {
-    0%, 100% { transform: rotate(-2deg); }
-    50% { transform: rotate(2deg); }
+    0%, 100% { transform: rotate(-1.5deg); }
+    50% { transform: rotate(1.5deg); }
   }
-  .animate-wiggle { animation: wiggle 3s ease-in-out infinite; }
+  .animate-wiggle { animation: wiggle 6s ease-in-out infinite; }
   @keyframes float-y {
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-10px); }
   }
-  .animate-float { animation: float-y 4s ease-in-out infinite; }
+  .animate-float { animation: float-y 5s ease-in-out infinite; }
   @keyframes marquee-x {
     0% { transform: translateX(0); }
     100% { transform: translateX(-50%); }
   }
-  .animate-marquee { animation: marquee-x 40s linear infinite; }
+  .animate-marquee { animation: marquee-x 50s linear infinite; }
+  /* Sharper photo treatment — no upscaling artifacts */
   .img-pop {
-    filter: contrast(1.12) saturate(1.35) brightness(1.03);
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+    filter: contrast(1.04) saturate(1.08);
   }
   .checker-bg {
-    background-color: var(--mustard);
+    background-color: var(--cream);
     background-image:
-      linear-gradient(45deg, color-mix(in oklab, var(--ink) 8%, transparent) 25%, transparent 25%),
-      linear-gradient(-45deg, color-mix(in oklab, var(--ink) 8%, transparent) 25%, transparent 25%);
+      linear-gradient(45deg, color-mix(in oklab, var(--ink) 5%, transparent) 25%, transparent 25%),
+      linear-gradient(-45deg, color-mix(in oklab, var(--ink) 5%, transparent) 25%, transparent 25%);
     background-size: 28px 28px;
+  }
+  .slat-bg {
+    background-color: var(--bamboo-light);
+    background-image:
+      repeating-linear-gradient(180deg,
+        color-mix(in oklab, var(--bamboo) 55%, transparent) 0 6px,
+        color-mix(in oklab, var(--bamboo) 25%, transparent) 6px 8px,
+        color-mix(in oklab, var(--bamboo-light) 90%, transparent) 8px 22px);
   }
 }
