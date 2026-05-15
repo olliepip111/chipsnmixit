@@ -125,11 +125,10 @@
     100% { transform: translateX(-50%); }
   }
   .animate-marquee { animation: marquee-x 50s linear infinite; }
-  /* Sharper photo treatment — no upscaling artifacts */
+  /* Crisp, vivid photos — smooth scaling, gentle color pop */
   .img-pop {
-    image-rendering: -webkit-optimize-contrast;
-    image-rendering: crisp-edges;
-    filter: contrast(1.04) saturate(1.08);
+    image-rendering: auto;
+    filter: contrast(1.06) saturate(1.18) brightness(1.02);
   }
   .checker-bg {
     background-color: var(--cream);
